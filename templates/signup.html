@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link href="{{ url_for('static', filename='css/signup.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</head>
+<body>
+
+<div id="id01" class="modal">
+  <form class="modal-content" name="signupForm" action="/signup-success" method="post" onsubmit="return validateForm()">
+    <div class="container">
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+
+      <label for="firstname" class="required-field">First Name</label>
+      <input type="text" placeholder="Enter First Name" name="firstname" required pattern="[A-Za-z]+" title="First name should only contain letters.">
+
+      <label for="lastname" class="required-field">Last Name</label>
+      <input type="text" placeholder="Enter Last Name" name="lastname" required pattern="[A-Za-z]+" title="Last name should only contain letters.">
+
+      <label for="gender" class="required-field">Gender</label><br>
+      <input type="radio" id="male" name="gender" value="Male" required>
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="Female" required>
+      <label for="female">Female</label><br>
+
+      <label for="email" class="required-field">Email</label>
+      <input type="email" placeholder="Enter Email" name="email" required>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            {% if message == 'This email is already registered.' %}
+              <div class="error-message">{{ message }}</div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <label for="psw" class="required-field">Password</label>
+      <input type="password" placeholder="Enter Password" name="psw" required pattern=".{8,}" title="Password must be at least 8 characters long.">
+
+      <label for="psw-repeat" class="required-field">Repeat Password</label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

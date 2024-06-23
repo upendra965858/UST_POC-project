@@ -1,0 +1,47 @@
+/* signup.css */
+.container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 50px;
+}
+.container h1 {
+    text-align: center;
+}
+.container label {
+    font-weight: bold;
+}
+.container input[type=text],
+.container input[type=password],
+.container input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.container input[type=radio] {
+    margin-right: 10px;
+}
+.container .clearfix {
+    text-align: center;
+}
+.container .clearfix button {
+    width: auto;
+    padding: 10px 18px;
+    margin: 10px 5px;
+}
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
+
+.required-field::after {
+    content: " *";
+    color: red;
+    margin-left: 2px;
+}
